@@ -2,29 +2,35 @@
 
 <div>
   <label for="length">Enter length</label>
-  <input id="length" />
+  <input id="length" (change)="onChangeLength($event)" />
 </div>
 
 <div>
   <label for="letters">Use letters</label>
-  <input id="letters" />
+  <input id="letters" type="checkbox" (change)="onChangeLetters()" />
 </div>
 
 <div>
   <label for="numbers">Use numbers</label>
-  <input id="numbers" />
+  <input id="numbers" type="checkbox" (change)="onChangeNumbers()" />
 </div>
 
 <div>
   <label for="symbols">Use symbols</label>
-  <input id="symbols" />
+  <input id="symbols" type="checkbox" (change)="onChangeSymbols()" />
 </div>
 
 <div>
-  <button type="button">Generate!</button>
+  <button type="button" (click)="onClickHandler()">Generate!</button>
+  <!-- // event binding -->
 </div>
 
 <div>
   <label>Your Password</label>
-  <input />
+  <input [value]="password" />
+  <!--  property binding -->
 </div>
+
+<p>{{ password }}</p>
+{{ length }}
+<!-- interpolation -->
