@@ -45,7 +45,8 @@
         Generate!
       </button>
 
-      <div class="box">
+      <div class="box" *ngIf="password">
+        <!--structural directives-->
         <label>Your Password</label>
         <input class="input" [value]="password" />
       </div>
