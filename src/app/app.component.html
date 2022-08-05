@@ -1,36 +1,54 @@
-<h1>Password Generator</h1>
+<div class="container">
+  <div class="columns is-centered">
+    <div class="box column is-one-third">
+      <h1 class="title has-text-centered">Password Generator</h1>
 
-<div>
-  <label for="length">Enter length</label>
-  <input id="length" (change)="onChangeLength($event)" />
+      <div class="field">
+        <label>Length</label>
+        <input class="input" (input)="onChangeLength($event)" />
+      </div>
+
+      <div class="field">
+        <div class="control">
+          <label class="checkbox">
+            <input (change)="onChangeLetters()" type="checkbox" />
+            Use Letters
+          </label>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="control">
+          <label class="checkbox">
+            <input (change)="onChangeNumbers()" type="checkbox" />
+            Use Numbers
+          </label>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="control">
+          <label class="checkbox">
+            <input (change)="onChangeSymbols()" type="checkbox" />
+            Use Symbols
+          </label>
+        </div>
+      </div>
+
+      <button
+        [disabled]="
+          !(length && (includeLetters || includeSymbols || includeNumbers))
+        "
+        (click)="onClickHandler()"
+        class="button is-link is-fullwidth"
+      >
+        Generate!
+      </button>
+
+      <div class="box">
+        <label>Your Password</label>
+        <input class="input" [value]="password" />
+      </div>
+    </div>
+  </div>
 </div>
-
-<div>
-  <label for="letters">Use letters</label>
-  <input id="letters" type="checkbox" (change)="onChangeLetters()" />
-</div>
-
-<div>
-  <label for="numbers">Use numbers</label>
-  <input id="numbers" type="checkbox" (change)="onChangeNumbers()" />
-</div>
-
-<div>
-  <label for="symbols">Use symbols</label>
-  <input id="symbols" type="checkbox" (change)="onChangeSymbols()" />
-</div>
-
-<div>
-  <button type="button" (click)="onClickHandler()">Generate!</button>
-  <!-- // event binding -->
-</div>
-
-<div>
-  <label>Your Password</label>
-  <input [value]="password" />
-  <!--  property binding -->
-</div>
-
-<p>{{ password }}</p>
-{{ length }}
-<!-- interpolation -->

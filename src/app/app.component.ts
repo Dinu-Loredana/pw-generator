@@ -32,6 +32,26 @@ export class AppComponent {
   }
 
   onClickHandler = () => {
-    this.password = 'my password';
+    const numbers = '1234567890';
+    const letters = 'abcdefghijklmnopqrstuvwyzx';
+    const symbols = '!£$%^&*()@?|/';
+
+    let validChars = '';
+    if (this.includeLetters) {
+      validChars += letters;
+    }
+    if (this.includeNumbers) {
+      validChars += numbers;
+    }
+    if (this.includeSymbols) {
+      validChars += symbols;
+    }
+
+    let generatedPw = '';
+    for (let i = 0; i < this.length; i++) {
+      let index = Math.floor(Math.random() * validChars.length);
+      generatedPw += validChars[index];
+    }
+    this.password = generatedPw;
   };
 }
